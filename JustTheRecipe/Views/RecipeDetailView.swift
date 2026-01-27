@@ -136,12 +136,25 @@ struct RecipeDetailView: View {
         .toolbar {
             ToolbarItemGroup(placement: .primaryAction) {
                 Button {
+                    recipeStore.toggleFavorite(recipe)
+                } label: {
+                    Image(systemName: recipe.isFavorite ? "heart.fill" : "heart")
+                        .foregroundStyle(recipe.isFavorite ? .pink : .primary)
+                }
+                
+                Button {
                     showingShareSheet = true
                 } label: {
                     Image(systemName: "square.and.arrow.up")
                 }
                 
                 Menu {
+                    Button {
+                        recipeStore.addToGroceryList(from: recipe)
+                    } label: {
+                        Label("Add to Grocery List", systemImage: "cart.badge.plus")
+                    }
+                    
                     Button {
                         showingEditSheet = true
                     } label: {
@@ -276,6 +289,7 @@ struct EditRecipeView: View {
     @State private var servings: String
     @State private var totalTime: String
     @State private var notes: String
+    @State private var category: RecipeCategory
     
     init(recipe: Recipe) {
         self.recipe = recipe
@@ -285,6 +299,7 @@ struct EditRecipeView: View {
         self._servings = State(initialValue: recipe.servings ?? "")
         self._totalTime = State(initialValue: recipe.totalTime ?? "")
         self._notes = State(initialValue: recipe.notes ?? "")
+        self._category = State(initialValue: recipe.category)
     }
     
     var body: some View {
@@ -294,6 +309,12 @@ struct EditRecipeView: View {
                     TextField("Recipe Title", text: $title)
                     TextField("Servings", text: $servings)
                     TextField("Total Time", text: $totalTime)
+                    
+                    Picker("Category", selection: $category) {
+                        ForEach(RecipeCategory.allCases, id: \.self) { cat in
+                            Label(cat.rawValue, systemImage: cat.icon).tag(cat)
+                        }
+                    }
                 }
                 
                 Section("Ingredients") {
@@ -356,6 +377,7 @@ struct EditRecipeView: View {
         updated.servings = servings.isEmpty ? nil : servings
         updated.totalTime = totalTime.isEmpty ? nil : totalTime
         updated.notes = notes.isEmpty ? nil : notes
+        updated.category = category
         
         recipeStore.update(updated)
         dismiss()

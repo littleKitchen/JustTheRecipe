@@ -1,5 +1,37 @@
 import Foundation
 
+enum RecipeCategory: String, Codable, CaseIterable {
+    case none = "None"
+    case breakfast = "Breakfast"
+    case lunch = "Lunch"
+    case dinner = "Dinner"
+    case dessert = "Dessert"
+    case snack = "Snack"
+    case drink = "Drink"
+    case appetizer = "Appetizer"
+    case side = "Side Dish"
+    case soup = "Soup"
+    case salad = "Salad"
+    case baking = "Baking"
+    
+    var icon: String {
+        switch self {
+        case .none: return "fork.knife"
+        case .breakfast: return "sun.rise"
+        case .lunch: return "sun.max"
+        case .dinner: return "moon.stars"
+        case .dessert: return "birthday.cake"
+        case .snack: return "carrot"
+        case .drink: return "cup.and.saucer"
+        case .appetizer: return "leaf"
+        case .side: return "square.split.1x2"
+        case .soup: return "flame"
+        case .salad: return "leaf.circle"
+        case .baking: return "oven"
+        }
+    }
+}
+
 struct Recipe: Identifiable, Codable, Equatable {
     var id: UUID
     var title: String
@@ -13,6 +45,8 @@ struct Recipe: Identifiable, Codable, Equatable {
     var notes: String?
     var createdAt: Date
     var updatedAt: Date
+    var isFavorite: Bool
+    var category: RecipeCategory
     
     init(
         id: UUID = UUID(),
@@ -26,7 +60,9 @@ struct Recipe: Identifiable, Codable, Equatable {
         sourceURL: String? = nil,
         notes: String? = nil,
         createdAt: Date = Date(),
-        updatedAt: Date = Date()
+        updatedAt: Date = Date(),
+        isFavorite: Bool = false,
+        category: RecipeCategory = .none
     ) {
         self.id = id
         self.title = title
@@ -40,6 +76,8 @@ struct Recipe: Identifiable, Codable, Equatable {
         self.notes = notes
         self.createdAt = createdAt
         self.updatedAt = updatedAt
+        self.isFavorite = isFavorite
+        self.category = category
     }
 }
 
@@ -67,6 +105,8 @@ extension Recipe {
         servings: "4 servings",
         prepTime: "5 min",
         cookTime: "15 min",
-        totalTime: "20 min"
+        totalTime: "20 min",
+        isFavorite: true,
+        category: .breakfast
     )
 }
