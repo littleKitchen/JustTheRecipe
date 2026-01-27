@@ -259,6 +259,7 @@ struct ManualRecipeEntryView: View {
     @State private var stepsText = ""
     @State private var servings = ""
     @State private var totalTime = ""
+    @State private var category: RecipeCategory = .none
     
     var body: some View {
         NavigationStack {
@@ -267,6 +268,12 @@ struct ManualRecipeEntryView: View {
                     TextField("Recipe Title", text: $title)
                     TextField("Servings (e.g., 4 servings)", text: $servings)
                     TextField("Total Time (e.g., 30 min)", text: $totalTime)
+                    
+                    Picker("Category", selection: $category) {
+                        ForEach(RecipeCategory.allCases, id: \.self) { cat in
+                            Label(cat.rawValue, systemImage: cat.icon).tag(cat)
+                        }
+                    }
                 }
                 
                 Section("Ingredients") {
@@ -322,7 +329,8 @@ struct ManualRecipeEntryView: View {
             ingredients: ingredients,
             steps: steps,
             servings: servings.isEmpty ? nil : servings,
-            totalTime: totalTime.isEmpty ? nil : totalTime
+            totalTime: totalTime.isEmpty ? nil : totalTime,
+            category: category
         )
         
         recipeStore.add(recipe)
