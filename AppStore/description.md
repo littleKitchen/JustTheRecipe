@@ -1,8 +1,8 @@
-# App Store Listing for "Just The Recipe"
+# App Store Listing for "Pure Recipe"
 
 ## App Name (30 chars max)
 ```
-Just The Recipe
+Pure Recipe
 ```
 
 ## Subtitle (30 chars max)
@@ -26,7 +26,7 @@ We've all been there. You search for a simple pancake recipe and get hit with:
 • Auto-playing videos
 • And finally... maybe... the actual recipe
 
-**Just The Recipe fixes this.**
+**Pure Recipe fixes this.**
 
 Paste any recipe URL, and we extract ONLY what you need:
 ✓ Ingredients list
@@ -61,7 +61,7 @@ AllRecipes, Serious Eats, Bon Appétit, Food Network, NY Times Cooking, Epicurio
 
 ---
 
-Download Just The Recipe. Paste a URL. Start cooking.
+Download Pure Recipe. Paste a URL. Start cooking.
 
 ## What's New (for updates)
 ```

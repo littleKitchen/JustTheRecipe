@@ -1,4 +1,4 @@
-# Just The Recipe 🍳
+# Pure Recipe 🍳
 
 **Paste any recipe URL. Get just the recipe. No life stories. No ads. No BS.**
 
@@ -12,7 +12,7 @@ Every recipe website buries the actual recipe under:
 
 ## The Solution
 
-Just The Recipe extracts ONLY what you need:
+Pure Recipe extracts ONLY what you need:
 - ✅ Ingredients list
 - ✅ Step-by-step instructions
 - ✅ Cooking times

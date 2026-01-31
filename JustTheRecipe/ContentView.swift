@@ -100,7 +100,7 @@ struct RecipeListView: View {
                     }
                 }
             }
-            .navigationTitle("Just The Recipe")
+            .navigationTitle("Pure Recipe")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {
