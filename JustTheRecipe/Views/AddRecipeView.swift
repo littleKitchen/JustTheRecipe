@@ -98,7 +98,7 @@ struct AddRecipeView: View {
                     VStack(alignment: .leading, spacing: 4) {
                         Label("Paste any recipe URL", systemImage: "1.circle.fill")
                         Label("We extract just the recipe", systemImage: "2.circle.fill")
-                        Label("No life stories, no ads", systemImage: "3.circle.fill")
+                        Label("No life stories, no clutter", systemImage: "3.circle.fill")
                     }
                     .font(.caption)
                     .foregroundStyle(.secondary)
