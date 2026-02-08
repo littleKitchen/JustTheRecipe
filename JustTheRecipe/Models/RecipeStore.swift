@@ -111,6 +111,38 @@ class RecipeStore: ObservableObject {
             groceryList = decoded
         }
     }
+    
+    // MARK: - Screenshot Mode
+    
+    func addSampleRecipes() {
+        guard recipes.isEmpty else { return }
+        
+        let samples = [
+            Recipe(
+                title: "Simple Pancakes",
+                ingredients: ["1 cup flour", "2 tbsp sugar", "1 cup milk", "1 egg", "2 tbsp butter"],
+                steps: ["Mix dry ingredients", "Add wet ingredients", "Cook on griddle until golden"],
+                servings: "4 servings", prepTime: "5 min", cookTime: "15 min", totalTime: "20 min",
+                isFavorite: true, category: .breakfast
+            ),
+            Recipe(
+                title: "Garlic Butter Pasta",
+                ingredients: ["8 oz spaghetti", "4 cloves garlic", "4 tbsp butter", "Parmesan cheese", "Fresh parsley"],
+                steps: ["Cook pasta al dente", "Sauté garlic in butter", "Toss pasta with garlic butter", "Top with cheese and parsley"],
+                servings: "2 servings", prepTime: "5 min", cookTime: "12 min", totalTime: "17 min",
+                isFavorite: false, category: .dinner
+            ),
+            Recipe(
+                title: "Classic Caesar Salad",
+                ingredients: ["Romaine lettuce", "Caesar dressing", "Croutons", "Parmesan", "Lemon"],
+                steps: ["Chop lettuce", "Toss with dressing", "Add croutons and cheese", "Squeeze lemon on top"],
+                servings: "2 servings", prepTime: "10 min", cookTime: "0 min", totalTime: "10 min",
+                isFavorite: true, category: .lunch
+            )
+        ]
+        
+        recipes = samples
+    }
 }
 
 struct GroceryItem: Identifiable, Codable, Equatable {
